@@ -3,6 +3,7 @@ import React from "react";
 import { Launch } from "../../types/Launch";
 import LaunchItem from "./LaunchItem";
 import { SortIcon } from "../../assets/icon";
+import "./launches.scss";
 
 interface Props {
   launches: Launch[];

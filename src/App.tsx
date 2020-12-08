@@ -4,6 +4,7 @@ import Header from "./components/header";
 import { LaunchList } from "./components/launches";
 import { getLaunches } from "./services/requests";
 import { Launch } from "./types/Launch";
+import { LaunchImage } from "./assets/img";
 
 const App: React.FC = () => {
   const [launches, setLaunches] = useState<Launch[]>([]);
@@ -17,10 +18,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <main className="App">
+    <>
       <Header />
-      <LaunchList launches={launches} />
-    </main>
+      <main className="content">
+        <img className="image" src={LaunchImage} alt="Space X Rocket launch" />
+        <LaunchList launches={launches} />
+      </main>
+    </>
   );
 };
 
