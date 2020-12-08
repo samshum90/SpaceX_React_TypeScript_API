@@ -1,7 +1,12 @@
 import React from "react";
+import { Launch } from "../../types/Launch";
 import LaunchItem from "./LaunchItem";
 
-const LaunchList: React.FC<{}> = () => {
+export interface Props {
+  launches: Launch[];
+}
+
+const LaunchList: React.FC<Props> = ({ launches }) => {
   return (
     <ul>
       <LaunchItem />
