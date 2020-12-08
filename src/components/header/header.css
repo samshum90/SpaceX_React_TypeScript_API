@@ -59,4 +59,53 @@ button {
       -ms-flex-align: center;
           align-items: center;
 }
-/*# sourceMappingURL=App.css.map */
+
+.header {
+  width: 100%;
+  height: 90px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2rem 0;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.header__title {
+  margin-left: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.header__title-logo {
+  width: 11.171875rem;
+  height: auto;
+}
+
+.header__title-text {
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.068rem;
+}
+
+.header__button {
+  width: 8.375rem;
+  height: 2.6875rem;
+  border-radius: 1.34375rem 0 0 1.34375rem;
+  font-weight: 700;
+}
+
+.header__button-icon {
+  width: 0.833rem;
+  height: 0.833rem;
+}
+/*# sourceMappingURL=header.css.map */

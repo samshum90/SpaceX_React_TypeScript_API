@@ -1,0 +1,40 @@
+@import "../../styles/App.scss";
+
+.header {
+  width: 100%;
+  height: $header-height;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  align-items: baseline;
+
+  &__title {
+    margin-left: 2rem;
+    display: flex;
+    align-items: baseline;
+
+    &-logo {
+      width: 11.171875rem;
+      height: auto;
+    }
+
+    &-text {
+      font-size: 1.25rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.068rem;
+    }
+  }
+
+  &__button {
+    width: 8.375rem;
+    height: 2.6875rem;
+    border-radius: 1.34375rem 0 0 1.34375rem;
+    font-weight: 700;
+
+    &-icon {
+      width: 0.833rem;
+      height: 0.833rem;
+    }
+  }
+}
