@@ -23,7 +23,13 @@ button {
 }
 
 .content {
-  display: flex;
+  position: relative;
+  background-image: url("../assets/img/launch-home.png");
+  background-repeat: no-repeat;
+  background-position: top 8rem left 2.5rem;
+  background-size: 533.54px 684px;
+  // display: flex;
+  // flex-direction: column;
   padding: 2.5rem;
 }
 .image {

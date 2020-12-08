@@ -62,9 +62,6 @@ button {
 }
 
 .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   padding: 2.5rem;
 }
 
@@ -76,10 +73,21 @@ button {
 
 .launch {
   width: 100%;
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-right: 2.5rem;
+  -ms-flex-item-align: right;
+      align-self: right;
 }
 
 .launch__header {
-  float: right;
+  margin-left: auto;
   margin-bottom: 0.8125rem;
 }
 
@@ -89,11 +97,11 @@ button {
 }
 
 .launch__list {
-  float: right;
+  margin-left: auto;
 }
 
 .launch__list-item {
-  width: 45.4375rem;
+  width: 50vw;
   height: 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -136,9 +144,6 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   text-align: right;
 }
 
