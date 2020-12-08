@@ -121,13 +121,34 @@ button {
   margin-right: 1.5rem;
 }
 
-.launch__list-item-name {
+.launch__list-item-flight {
   font-size: 2em;
   font-weight: 500;
 }
 
 .launch__list-item-end {
-  display: inline-block;
-  float: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: right;
+}
+
+.launch__list-item-date {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.launch__list-item-rocket {
+  font-size: 1.5em;
+  font-weight: 700;
 }
 /*# sourceMappingURL=launches.css.map */
