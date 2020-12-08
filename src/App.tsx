@@ -17,10 +17,10 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
+    <main className="App">
       <Header />
-      <LaunchList />
-    </div>
+      <LaunchList launches={launches} />
+    </main>
   );
 };
 

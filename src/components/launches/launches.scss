@@ -1,0 +1,11 @@
+@import "../../styles/App.scss";
+
+.launch {
+  width: 100%;
+  &__header {
+    float: right;
+  }
+  &__list {
+    float: right;
+  }
+}
