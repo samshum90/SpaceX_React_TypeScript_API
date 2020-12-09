@@ -5,10 +5,10 @@ import { Logo } from "../../assets";
 import { RefreshIcon } from "../../assets/icon";
 
 interface Props {
-  fetchLaunches(): void;
+  handleReloadClick(): void;
 }
 
-const Header: React.FC<Props> = ({ fetchLaunches }: Props) => {
+const Header: React.FC<Props> = ({ handleReloadClick }: Props) => {
   return (
     <header className="header">
       <div className="header__title">
@@ -18,7 +18,7 @@ const Header: React.FC<Props> = ({ fetchLaunches }: Props) => {
       <button
         className="header__button"
         type="button"
-        onClick={() => fetchLaunches()}
+        onClick={() => handleReloadClick()}
       >
         Reload Data
         <img

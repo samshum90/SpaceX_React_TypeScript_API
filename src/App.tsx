@@ -2,32 +2,38 @@ import React, { useEffect, useState } from "react";
 
 import Header from "./components/header";
 import { LaunchList } from "./components/launches";
-import { getOrderedLaunches } from "./services/requests";
+import { getOrderedFilteredLaunches } from "./services/requests";
 import { Launch } from "./types/Launch";
 // import { LaunchImage } from "./assets/img";
 
 const App: React.FC = () => {
   const [launches, setLaunches] = useState<Launch[]>([]);
   const [ascending, setAscending] = useState<boolean>(true);
-  const [filterYears, setFilterYears] = useState<string[]>([]);
+  const [selectedYear, setSelectedYear] = useState<string>("");
 
   useEffect(() => {
     fetchLaunches();
-  }, [ascending]);
+  }, [ascending, selectedYear]);
 
   const fetchLaunches = (): void => {
-    getOrderedLaunches(ascending).then((launches: Launch[] | any) =>
-      setLaunches(launches)
-    );
+    getOrderedFilteredLaunches(
+      ascending,
+      selectedYear
+    ).then((launches: Launch[] | any) => setLaunches(launches));
   };
 
   const toggleAscending = (): void => {
     setAscending(!ascending);
   };
 
+  const handleReloadClick = (): void => {
+    setSelectedYear("");
+    fetchLaunches();
+  };
+
   return (
     <>
-      <Header fetchLaunches={fetchLaunches} />
+      <Header handleReloadClick={handleReloadClick} />
       <main className="content">
         {/* <img className="image" src={LaunchImage} alt="Space X Rocket launch" /> */}
 
@@ -35,6 +41,8 @@ const App: React.FC = () => {
           launches={launches}
           ascending={ascending}
           toggleAscending={toggleAscending}
+          selectedYear={selectedYear}
+          setSelectedYear={setSelectedYear}
         />
       </main>
     </>
