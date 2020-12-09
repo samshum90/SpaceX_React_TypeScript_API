@@ -1,9 +1,6 @@
-import { ServerStreamFileResponseOptionsWithError } from "http2";
-
 export interface Launch {
     flight_number: number;
     mission_name: string;
-    launch_year: string;
     launch_date_utc: Date;
     rocket: {
         rocket_name: string;
