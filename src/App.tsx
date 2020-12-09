@@ -14,12 +14,13 @@ const App: React.FC = () => {
   }, []);
 
   const fetchLaunches = (): void => {
+    console.log("fetched");
     getLaunches().then((launches: Launch[] | any) => setLaunches(launches));
   };
 
   return (
     <>
-      <Header />
+      <Header fetchLaunches={fetchLaunches} />
       <main className="content">
         {/* <img className="image" src={LaunchImage} alt="Space X Rocket launch" /> */}
 
