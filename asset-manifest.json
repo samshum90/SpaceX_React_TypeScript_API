@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/SpaceX/static/css/main.460452b6.chunk.css",
-    "main.js": "/SpaceX/static/js/main.7bdfba66.chunk.js",
-    "main.js.map": "/SpaceX/static/js/main.7bdfba66.chunk.js.map",
-    "runtime-main.js": "/SpaceX/static/js/runtime-main.5459407b.js",
-    "runtime-main.js.map": "/SpaceX/static/js/runtime-main.5459407b.js.map",
-    "static/js/2.fa841935.chunk.js": "/SpaceX/static/js/2.fa841935.chunk.js",
-    "static/js/2.fa841935.chunk.js.map": "/SpaceX/static/js/2.fa841935.chunk.js.map",
-    "static/js/3.e50f7169.chunk.js": "/SpaceX/static/js/3.e50f7169.chunk.js",
-    "static/js/3.e50f7169.chunk.js.map": "/SpaceX/static/js/3.e50f7169.chunk.js.map",
-    "index.html": "/SpaceX/index.html",
-    "static/css/main.460452b6.chunk.css.map": "/SpaceX/static/css/main.460452b6.chunk.css.map",
-    "static/js/2.fa841935.chunk.js.LICENSE.txt": "/SpaceX/static/js/2.fa841935.chunk.js.LICENSE.txt",
-    "static/media/launches.scss": "/SpaceX/static/media/launch-home.b539e3f9.png",
-    "static/media/spacex-logo.e755fcbf.png": "/SpaceX/static/media/spacex-logo.e755fcbf.png"
+    "main.css": "/SpaceX_React_TypeScript_API/static/css/main.917d3664.chunk.css",
+    "main.js": "/SpaceX_React_TypeScript_API/static/js/main.7bdfba66.chunk.js",
+    "main.js.map": "/SpaceX_React_TypeScript_API/static/js/main.7bdfba66.chunk.js.map",
+    "runtime-main.js": "/SpaceX_React_TypeScript_API/static/js/runtime-main.75f9f825.js",
+    "runtime-main.js.map": "/SpaceX_React_TypeScript_API/static/js/runtime-main.75f9f825.js.map",
+    "static/js/2.fa841935.chunk.js": "/SpaceX_React_TypeScript_API/static/js/2.fa841935.chunk.js",
+    "static/js/2.fa841935.chunk.js.map": "/SpaceX_React_TypeScript_API/static/js/2.fa841935.chunk.js.map",
+    "static/js/3.e50f7169.chunk.js": "/SpaceX_React_TypeScript_API/static/js/3.e50f7169.chunk.js",
+    "static/js/3.e50f7169.chunk.js.map": "/SpaceX_React_TypeScript_API/static/js/3.e50f7169.chunk.js.map",
+    "index.html": "/SpaceX_React_TypeScript_API/index.html",
+    "static/css/main.917d3664.chunk.css.map": "/SpaceX_React_TypeScript_API/static/css/main.917d3664.chunk.css.map",
+    "static/js/2.fa841935.chunk.js.LICENSE.txt": "/SpaceX_React_TypeScript_API/static/js/2.fa841935.chunk.js.LICENSE.txt",
+    "static/media/launches.scss": "/SpaceX_React_TypeScript_API/static/media/launch-home.b539e3f9.png",
+    "static/media/spacex-logo.e755fcbf.png": "/SpaceX_React_TypeScript_API/static/media/spacex-logo.e755fcbf.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.5459407b.js",
+    "static/js/runtime-main.75f9f825.js",
     "static/js/2.fa841935.chunk.js",
-    "static/css/main.460452b6.chunk.css",
+    "static/css/main.917d3664.chunk.css",
     "static/js/main.7bdfba66.chunk.js"
   ]
 }
