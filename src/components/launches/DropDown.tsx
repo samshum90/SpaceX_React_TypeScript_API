@@ -5,13 +5,13 @@ import { SelectIcon } from "../../assets/icon";
 interface Props {
   filterYears: string[];
   selectedYear: string;
-  setSelectedYear: (year: string) => void;
+  handleFilterClick: (year: string) => void;
 }
 
 const DropDown: React.FC<Props> = ({
   filterYears,
   selectedYear,
-  setSelectedYear,
+  handleFilterClick,
 }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -33,7 +33,7 @@ const DropDown: React.FC<Props> = ({
             <li
               className="dropdown-list-item"
               key={year}
-              onClick={() => setSelectedYear(year)}
+              onClick={() => handleFilterClick(year)}
             >
               {year}
             </li>
