@@ -16,7 +16,7 @@ const DropDown: React.FC<Props> = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div className="dropdown__wrapper">
+    <div className="dropdown">
       <div className="dropdown__header" onClick={() => setIsOpen(!isOpen)}>
         <div className="dropdown__header-title">
           {selectedYear ? `Filtered by ${selectedYear}` : "Filter by Year"}
