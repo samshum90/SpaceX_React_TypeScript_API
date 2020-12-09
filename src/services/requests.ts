@@ -7,3 +7,10 @@ export const getLaunches = async (): Promise<Launch[]> => {
         .then(res => res.json())
         .catch(error => console.log(error));
 }
+
+export const getOrderedLaunches = (ascending: boolean): Promise<Launch[]> => {
+    const data = ascending ? fetch(baseUrl + "launches?order=asc") : fetch(baseUrl + "launches?order=desc")
+    return data
+        .then(res => res.json())
+        .catch(error => console.log(error));
+}
