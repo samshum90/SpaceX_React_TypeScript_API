@@ -1,4 +1,4 @@
-# Tech Test
+# Space X
 
 Your task is to create a React application that will consume data from the SpaceX public API. The application must retrieve historic and future SpaceX launches and present them in a list view.
 Provided in this pack are a copy of the designs as well as all of the assets you will need. Use the create-react-app CLI tool to generate a new react project and feel free to use any 3rd party packages that will assist in your development.

@@ -2,13 +2,13 @@
 
 .launch {
   width: 100%;
-  display: block;
   display: flex;
   flex-direction: column;
   padding-right: 2.5rem;
   align-self: right;
 
   &__header {
+    display: flex;
     margin-left: auto;
     // float: right;
     margin-bottom: 0.8125rem;

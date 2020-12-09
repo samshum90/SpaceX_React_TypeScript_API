@@ -58,6 +58,23 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
+}
+
+.content {
+  height: 100vh;
+  position: relative;
+  background-image: url("../assets/img/launch-home.png");
+  background-repeat: no-repeat;
+  background-position: top 8rem left 2.5rem;
+  background-size: 533.54px 684px;
+  padding: 2.5rem;
+}
+
+.image {
+  width: 40vw;
+  height: 80vh;
+  position: relative;
 }
 
 .header {

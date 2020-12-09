@@ -13,7 +13,7 @@ body {
 
 button {
   background-color: $primary-blue;
-  color: #ffffff;
+  color: $button-font-color;
   border: none;
   display: flex;
   justify-content: space-evenly;
