@@ -9,17 +9,17 @@ import "../launches.scss";
 interface Props {
   launches: Launch[];
   ascending: boolean;
-  toggleAscending: () => void;
+  handleSortClick: () => void;
   selectedYear: string;
-  setSelectedYear: (year: string) => void;
+  handleFilterClick: (year: string) => void;
 }
 
 const LaunchList: React.FC<Props> = ({
   launches,
   ascending,
-  toggleAscending,
+  handleSortClick,
   selectedYear,
-  setSelectedYear,
+  handleFilterClick,
 }: Props) => {
   const [filterYears, setFilterYears] = useState<string[]>([]);
 
@@ -41,9 +41,9 @@ const LaunchList: React.FC<Props> = ({
         <DropDown
           filterYears={filterYears}
           selectedYear={selectedYear}
-          setSelectedYear={setSelectedYear}
+          handleFilterClick={handleFilterClick}
         />
-        <button className="launch__button" onClick={() => toggleAscending()}>
+        <button className="launch__button" onClick={() => handleSortClick()}>
           Sort {ascending ? "Descending" : "Ascending"}
           <img className="launch__button-icon" src={SortIcon} alt="Sort Icon" />
         </button>

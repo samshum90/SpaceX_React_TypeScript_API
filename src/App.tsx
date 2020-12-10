@@ -2,25 +2,24 @@ import React, { useEffect, useState } from "react";
 
 import Header from "./components/header";
 import { LaunchList } from "./components/launches";
-import { getOrderedFilteredLaunches } from "./services/requests";
+import { getLaunches } from "./services/requests";
 import { Launch } from "./types/Launch";
-// import { LaunchImage } from "./assets/img";
 
 const App: React.FC = () => {
-  const container = React.useRef<HTMLDivElement>(null);
   const [launches, setLaunches] = useState<Launch[]>([]);
+  const [initialLaunches, setInitialLaunches] = useState<Launch[]>([]);
   const [ascending, setAscending] = useState<boolean>(true);
   const [selectedYear, setSelectedYear] = useState<string>("");
 
   useEffect(() => {
     fetchLaunches();
-  }, [ascending, selectedYear]);
+  }, []);
 
   const fetchLaunches = (): void => {
-    getOrderedFilteredLaunches(
-      ascending,
-      selectedYear
-    ).then((launches: Launch[] | any) => setLaunches(launches));
+    getLaunches().then((launches: Launch[] | any) => {
+      setLaunches(launches);
+      setInitialLaunches(launches);
+    });
   };
 
   const toggleAscending = (): void => {
@@ -32,21 +31,64 @@ const App: React.FC = () => {
     fetchLaunches();
   };
 
+  const handleSortClick = (): void => {
+    if (ascending) {
+      const sortedLaunches = launches.sort(function (
+        item1: Launch,
+        item2: Launch
+      ) {
+        let x: number = item1.flight_number;
+        let y: number = item2.flight_number;
+        if (x < y) {
+          return 1;
+        }
+        if (x > y) {
+          return -1;
+        }
+        return 0;
+      });
+      setLaunches(sortedLaunches);
+    } else {
+      const sortedLaunches = launches.sort(function (
+        item1: Launch,
+        item2: Launch
+      ) {
+        let x: number = item1.flight_number;
+        let y: number = item2.flight_number;
+        if (x < y) {
+          return -1;
+        }
+        if (x > y) {
+          return 1;
+        }
+        return 0;
+      });
+      setLaunches(sortedLaunches);
+    }
+    toggleAscending();
+  };
+
+  const handleFilterClick = (year: string): void => {
+    setSelectedYear(year);
+    const filteredLaunches = initialLaunches.filter(
+      (launch: Launch) => launch.launch_year === year
+    );
+    setLaunches(filteredLaunches);
+  };
+
   return (
-    <div ref={container}>
+    <>
       <Header handleReloadClick={handleReloadClick} />
       <main className="content">
-        {/* <img className="image" src={LaunchImage} alt="Space X Rocket launch" /> */}
-
         <LaunchList
           launches={launches}
           ascending={ascending}
-          toggleAscending={toggleAscending}
+          handleSortClick={handleSortClick}
           selectedYear={selectedYear}
-          setSelectedYear={setSelectedYear}
+          handleFilterClick={handleFilterClick}
         />
       </main>
-    </div>
+    </>
   );
 };
 

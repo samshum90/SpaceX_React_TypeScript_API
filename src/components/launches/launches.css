@@ -173,19 +173,6 @@ button {
 .dropdown__header {
   width: 9.75rem;
   height: 2.6875rem;
-  background-color: #215184;
-  color: #ffffff;
-  border: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  cursor: pointer;
 }
 
 .dropdown-list {

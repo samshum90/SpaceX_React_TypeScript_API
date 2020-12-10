@@ -22,7 +22,7 @@ describe("<DropDown />", () => {
       <DropDown
         filterYears={mockfilteredYears}
         selectedYear={mockSelectedYear}
-        setSelectedYear={mockSetSelectedYear}
+        handleFilterClick={mockSetSelectedYear}
       />
     );
   });
@@ -51,7 +51,7 @@ describe("<DropDown />", () => {
       <DropDown
         filterYears={mockfilteredYears}
         selectedYear={"2006"}
-        setSelectedYear={mockSetSelectedYear}
+        handleFilterClick={mockSetSelectedYear}
       />
     );
     fireEvent.click(documentBody.getByRole("button"));
