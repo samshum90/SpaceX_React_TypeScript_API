@@ -111,6 +111,7 @@ button {
 .launch__list-item {
   width: 50vw;
   height: 5rem;
+  background-color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

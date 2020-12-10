@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import { Launch } from "../../types/Launch";
-import LaunchItem from "./LaunchItem";
-import DropDown from "./DropDown";
-import { SortIcon } from "../../assets/icon";
-import "./launches.scss";
+import { Launch } from "../../../types/Launch";
+import LaunchItem from "../LaunchItem";
+import DropDown from "../DropDown";
+import { SortIcon } from "../../../assets/icon";
+import "../launches.scss";
 
 interface Props {
   launches: Launch[];

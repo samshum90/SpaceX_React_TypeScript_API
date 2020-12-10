@@ -10,7 +10,7 @@ interface Props {
 
 const Header: React.FC<Props> = ({ handleReloadClick }: Props) => {
   return (
-    <header className="header">
+    <header data-testid="header" className="header">
       <div className="header__title">
         <img className="header__title-logo" src={Logo} alt="Space X logo" />
         <h1 className="header__title-text">Launches</h1>

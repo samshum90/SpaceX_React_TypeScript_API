@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { SelectIcon } from "../../assets/icon";
+import { SelectIcon } from "../../../assets/icon";
 
 interface Props {
   filterYears: string[];
@@ -24,7 +24,7 @@ const DropDown: React.FC<Props> = ({
         <img
           className="dropdown__header-icon"
           src={SelectIcon}
-          alt="Sort Icon"
+          alt="Filter Icon"
         />
       </div>
       {isOpen && (

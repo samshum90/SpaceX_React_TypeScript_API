@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Launch } from "../../types/Launch";
+import { Launch } from "../../../types/Launch";
 
 interface Props {
   launch: Launch;
