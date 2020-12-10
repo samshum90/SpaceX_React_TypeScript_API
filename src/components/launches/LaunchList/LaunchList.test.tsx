@@ -54,9 +54,7 @@ describe("<LaunchList />", () => {
   });
 
   it("shows button texts", () => {
-    expect(documentBody.getByRole("button")).toHaveTextContent(
-      "Sort Descending"
-    );
+    expect(documentBody.getByText("Sort Descending")).toBeInTheDocument();
     expect(documentBody.getByAltText("Sort Icon")).toBeInTheDocument();
   });
 
@@ -71,9 +69,7 @@ describe("<LaunchList />", () => {
         setSelectedYear={mockSelectedYear}
       />
     );
-    expect(documentBody.getByRole("button")).toHaveTextContent(
-      "Sort Ascending"
-    );
+    expect(documentBody.getByText("Sort Ascending")).toBeInTheDocument();
   });
 
   it("display launches", async () => {

@@ -15,9 +15,14 @@ const DropDown: React.FC<Props> = ({
 }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const handleYearClick = (year: string): void => {
+    setSelectedYear(year);
+    setIsOpen(false);
+  };
+
   return (
     <div className="dropdown">
-      <div className="dropdown__header" onClick={() => setIsOpen(!isOpen)}>
+      <button className="dropdown__header" onClick={() => setIsOpen(!isOpen)}>
         <div className="dropdown__header-title">
           {selectedYear ? `Filtered by ${selectedYear}` : "Filter by Year"}
         </div>
@@ -26,14 +31,14 @@ const DropDown: React.FC<Props> = ({
           src={SelectIcon}
           alt="Filter Icon"
         />
-      </div>
+      </button>
       {isOpen && (
         <ul className="dropdown-list">
           {filterYears.map((year) => (
             <li
               className="dropdown-list-item"
               key={year}
-              onClick={() => setSelectedYear(year)}
+              onClick={() => handleYearClick(year)}
             >
               {year}
             </li>
