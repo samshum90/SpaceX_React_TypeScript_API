@@ -1,12 +1,7 @@
 import React from "react";
 import LaunchList from ".";
 
-import {
-  render,
-  RenderResult,
-  fireEvent,
-  waitFor,
-} from "@testing-library/react";
+import { render, RenderResult, fireEvent } from "@testing-library/react";
 import { Launch } from "../../../types/Launch";
 
 let documentBody: RenderResult;
@@ -43,9 +38,9 @@ describe("<LaunchList />", () => {
       <LaunchList
         launches={stubbedLaunches}
         ascending={mockAscending}
-        toggleAscending={mockToggleAscending}
+        handleSortClick={mockToggleAscending}
         selectedYear={mockYear}
-        setSelectedYear={mockSelectedYear}
+        handleFilterClick={mockSelectedYear}
       />
     );
   });
@@ -64,16 +59,23 @@ describe("<LaunchList />", () => {
       <LaunchList
         launches={stubbedLaunches}
         ascending={false}
-        toggleAscending={mockToggleAscending}
-        selectedYear={mockYear}
-        setSelectedYear={mockSelectedYear}
+        handleSortClick={mockToggleAscending}
+        selectedYear={"2006"}
+        handleFilterClick={mockSelectedYear}
       />
     );
     expect(documentBody.getByText("Sort Ascending")).toBeInTheDocument();
+    expect(documentBody.getByText("Filtered by 2006")).toBeInTheDocument();
   });
 
   it("display launches", async () => {
     const items = await documentBody.findAllByRole("listitem");
     expect(items).toHaveLength(2);
+  });
+
+  it("runs on click", async () => {
+    const sortButton = documentBody.getByText("Sort Descending");
+    fireEvent.click(sortButton);
+    expect(mockToggleAscending).toHaveBeenCalledTimes(1);
   });
 });
