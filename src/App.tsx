@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import Header from "./components/header";
+import { Header } from "./components";
+import { LaunchHeader } from "./components/launches";
 import { LaunchList } from "./components/launches";
 import { getLaunches } from "./services/requests";
 import { Launch } from "./types/Launch";
@@ -80,13 +81,16 @@ const App: React.FC = () => {
     <>
       <Header handleReloadClick={handleReloadClick} />
       <main className="content">
-        <LaunchList
-          launches={launches}
-          ascending={ascending}
-          handleSortClick={handleSortClick}
-          selectedYear={selectedYear}
-          handleFilterClick={handleFilterClick}
-        />
+        <div className="launch">
+          <LaunchHeader
+            launches={launches}
+            ascending={ascending}
+            handleSortClick={handleSortClick}
+            selectedYear={selectedYear}
+            handleFilterClick={handleFilterClick}
+          />
+          <LaunchList launches={launches} />
+        </div>
       </main>
     </>
   );

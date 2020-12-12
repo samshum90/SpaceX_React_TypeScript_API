@@ -48,56 +48,14 @@ const mockSelectedYear = jest.fn();
 describe("<LaunchList />", () => {
   beforeEach(() => {
     // Arrange
-    documentBody = render(
-      <LaunchList
-        launches={stubbedLaunches}
-        ascending={mockAscending}
-        handleSortClick={mockToggleAscending}
-        selectedYear={mockYear}
-        handleFilterClick={mockSelectedYear}
-      />
-    );
+    documentBody = render(<LaunchList launches={stubbedLaunches} />);
   });
   it("matches snapshot", () => {
     expect(documentBody).toMatchSnapshot();
   });
 
-  it("shows button texts", () => {
-    expect(documentBody.getByText("Sort Descending")).toBeInTheDocument();
-    expect(documentBody.getByAltText("Sort Icon")).toBeInTheDocument();
-  });
-
   it("display launches", async () => {
     const items = await documentBody.findAllByRole("listitem");
     expect(items).toHaveLength(3);
-  });
-
-  it("button text changes", () => {
-    const { rerender } = documentBody;
-    rerender(
-      <LaunchList
-        launches={stubbedLaunches}
-        ascending={false}
-        handleSortClick={mockToggleAscending}
-        selectedYear={"2006"}
-        handleFilterClick={mockSelectedYear}
-      />
-    );
-    expect(documentBody.getByText("Sort Ascending")).toBeInTheDocument();
-    expect(documentBody.getByText("Filtered by 2006")).toBeInTheDocument();
-  });
-
-  it("runs on click", async () => {
-    const sortButton = documentBody.getByText("Sort Descending");
-    fireEvent.click(sortButton);
-    expect(mockToggleAscending).toHaveBeenCalledTimes(1);
-  });
-  it("populates Years dropdown", async () => {
-    const filterButton = documentBody.getByText("Filter by Year");
-    fireEvent.click(filterButton);
-    const listItems = await documentBody.findAllByRole("listitem");
-    expect(listItems).toHaveLength(5);
-    expect(listItems[0]).toHaveTextContent("2006");
-    expect(listItems[1]).toHaveTextContent("2008");
   });
 });

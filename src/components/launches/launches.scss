@@ -20,6 +20,13 @@
     &-icon {
     }
   }
+
+  &__loading {
+    margin-left: auto;
+    font-size: 2.5em;
+    font-weight: 500;
+  }
+
   &__list {
     margin-left: auto;
     // float: right;

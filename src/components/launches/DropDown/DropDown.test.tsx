@@ -59,4 +59,13 @@ describe("<DropDown />", () => {
     );
     expect(documentBody.getByText("Filtered by 2006")).toBeInTheDocument();
   });
+
+  it("runs method on year click", async () => {
+    const dropdown = documentBody.getByRole("button");
+    fireEvent.click(dropdown);
+
+    const year = await documentBody.findByText("2006");
+    fireEvent.click(year);
+    expect(mockSetSelectedYear).toHaveBeenCalledTimes(1);
+  });
 });
