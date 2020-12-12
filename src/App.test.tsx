@@ -2,14 +2,8 @@ import React from "react";
 import App from "./App";
 import fetchMock from "fetch-mock";
 
-import {
-  render,
-  RenderResult,
-  fireEvent,
-  screen,
-} from "@testing-library/react";
+import { render, RenderResult, fireEvent } from "@testing-library/react";
 import { Launch } from "./types/Launch";
-import { getLaunches } from "./services/requests";
 
 let documentBody: RenderResult;
 
@@ -26,7 +20,7 @@ const mockResponse: Launch[] = [
   {
     flight_number: 2,
     mission_name: "DemoSat",
-    launch_year: "2007",
+    launch_year: "2006",
     launch_date_utc: new Date("2007-03-21T01:10:00.000Z"),
     rocket: {
       rocket_name: "Falcon 1",
@@ -68,6 +62,9 @@ describe("<App />", () => {
       "#2",
       "DemoSat",
       "21st Mar 2007",
+      "#3",
+      "Trailblazer",
+      "29th Aug 2008",
     ];
 
     const button = documentBody.getByText("Reload Data");
@@ -80,35 +77,13 @@ describe("<App />", () => {
     expect(await documentBody.findAllByRole("listitem")).toHaveLength(3);
 
     const launches = await documentBody.findAllByText(/#[1-3]/);
-    // const launches = await documentBody.findAllByRole("listitem");
     expect(launches).toHaveLength(3);
     expect(launches[0]).toHaveTextContent("#1");
     expect(launches[1]).toHaveTextContent("#2");
     expect(launches[2]).toHaveTextContent("#3");
   });
 
-  it("sorts on click", async () => {
-    fetchMock.get("https://api.spacexdata.com/v3/launches/", {
-      body: mockResponse,
-      status: 200,
-    });
-
-    const loadButton = documentBody.getByText("Reload Data");
-    fireEvent.click(loadButton);
-
-    const sortButton = documentBody.getByText("Sort Descending");
-    fireEvent.click(sortButton);
-    expect(documentBody.getByText("Sort Ascending")).toBeInTheDocument();
-
-    // const launches = await documentBody.findAllByText(/#[1-2]/);
-    const launches = await documentBody.findAllByRole("listitem");
-    expect(launches).toHaveLength(3);
-    screen.debug();
-    expect(launches[0]).toHaveTextContent("#2");
-    expect(launches[1]).toHaveTextContent("#1");
-  });
-
-  it("filters on year click", async () => {
+  it("filters then sorts on year click", async () => {
     fetchMock.get("https://api.spacexdata.com/v3/launches/", {
       body: mockResponse,
       status: 200,
@@ -125,12 +100,27 @@ describe("<App />", () => {
 
     const year = await documentBody.findByText("2006");
     expect(year).toBeInTheDocument();
+
     fireEvent.click(year);
 
-    const filteredListItems = documentBody.queryAllByRole("listitem");
-    expect(filteredListItems).toHaveLength(1);
+    const newFilterButton = documentBody.getByText("Filtered by 2006");
+    expect(newFilterButton).toBeInTheDocument();
 
-    const filteredLaunch = await documentBody.findByText("#1");
-    expect(filteredLaunch).toBeInTheDocument();
+    const filteredListItems = documentBody.queryAllByRole("listitem");
+    expect(filteredListItems).toHaveLength(2);
+    expect(filteredListItems[0]).toHaveTextContent("#1");
+    expect(filteredListItems[1]).toHaveTextContent("#2");
+
+    const filteredLaunch1 = await documentBody.findByText("#1");
+    expect(filteredLaunch1).toBeInTheDocument();
+
+    const sortButton = documentBody.getByText("Sort Descending");
+    fireEvent.click(sortButton);
+    expect(documentBody.getByText("Sort Ascending")).toBeInTheDocument();
+
+    const sortedFilteredListItems = documentBody.queryAllByRole("listitem");
+    expect(sortedFilteredListItems).toHaveLength(2);
+    expect(sortedFilteredListItems[0]).toHaveTextContent("#2");
+    expect(sortedFilteredListItems[1]).toHaveTextContent("#1");
   });
 });
