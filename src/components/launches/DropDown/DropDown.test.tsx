@@ -4,7 +4,7 @@ import DropDown from ".";
 import { render, RenderResult, fireEvent } from "@testing-library/react";
 
 let documentBody: RenderResult;
-const mockfilteredYears: string[] = [
+const mockFilteredYears: string[] = [
   "2006",
   "2007",
   "2008",
@@ -20,7 +20,7 @@ describe("<DropDown />", () => {
   beforeEach(() => {
     documentBody = render(
       <DropDown
-        filterYears={mockfilteredYears}
+        filterYears={mockFilteredYears}
         selectedYear={mockSelectedYear}
         handleFilterClick={mockSetSelectedYear}
       />
@@ -37,24 +37,26 @@ describe("<DropDown />", () => {
     expect(documentBody.getByAltText("Filter Icon")).toBeInTheDocument();
   });
 
-  it("has list of years", async () => {
+  it("has a dropdown list of years", async () => {
     const dropdown = documentBody.getByRole("button");
     fireEvent.click(dropdown);
-    const items = await documentBody.queryAllByRole("listitem");
-    expect(items).toHaveLength(7);
-    expect(documentBody.queryByText("2006")).toBeInTheDocument();
+
+    const listItems = await documentBody.queryAllByRole("listitem");
+    expect(listItems).toHaveLength(7);
+    for (let i = 0; i < mockFilteredYears.length; i++) {
+      expect(listItems[i]).toHaveTextContent(mockFilteredYears[i]);
+    }
   });
 
   it("button text changes", async () => {
     const { rerender } = documentBody;
     rerender(
       <DropDown
-        filterYears={mockfilteredYears}
+        filterYears={mockFilteredYears}
         selectedYear={"2006"}
         handleFilterClick={mockSetSelectedYear}
       />
     );
-    fireEvent.click(documentBody.getByRole("button"));
     expect(documentBody.getByText("Filtered by 2006")).toBeInTheDocument();
   });
 });

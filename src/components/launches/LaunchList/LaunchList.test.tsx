@@ -1,7 +1,12 @@
 import React from "react";
 import LaunchList from ".";
 
-import { render, RenderResult, fireEvent } from "@testing-library/react";
+import {
+  render,
+  RenderResult,
+  fireEvent,
+  screen,
+} from "@testing-library/react";
 import { Launch } from "../../../types/Launch";
 
 let documentBody: RenderResult;
@@ -18,8 +23,17 @@ const stubbedLaunches: Launch[] = [
   {
     flight_number: 2,
     mission_name: "DemoSat",
-    launch_year: "2007",
+    launch_year: "2006",
     launch_date_utc: new Date("2007-03-21T01:10:00.000Z"),
+    rocket: {
+      rocket_name: "Falcon 1",
+    },
+  },
+  {
+    flight_number: 3,
+    mission_name: "Trailblazer",
+    launch_year: "2008",
+    launch_date_utc: new Date("2008-08-29T01:10:00.000Z"),
     rocket: {
       rocket_name: "Falcon 1",
     },
@@ -53,6 +67,11 @@ describe("<LaunchList />", () => {
     expect(documentBody.getByAltText("Sort Icon")).toBeInTheDocument();
   });
 
+  it("display launches", async () => {
+    const items = await documentBody.findAllByRole("listitem");
+    expect(items).toHaveLength(3);
+  });
+
   it("button text changes", () => {
     const { rerender } = documentBody;
     rerender(
@@ -68,14 +87,17 @@ describe("<LaunchList />", () => {
     expect(documentBody.getByText("Filtered by 2006")).toBeInTheDocument();
   });
 
-  it("display launches", async () => {
-    const items = await documentBody.findAllByRole("listitem");
-    expect(items).toHaveLength(2);
-  });
-
   it("runs on click", async () => {
     const sortButton = documentBody.getByText("Sort Descending");
     fireEvent.click(sortButton);
     expect(mockToggleAscending).toHaveBeenCalledTimes(1);
+  });
+  it("populates Years dropdown", async () => {
+    const filterButton = documentBody.getByText("Filter by Year");
+    fireEvent.click(filterButton);
+    const listItems = await documentBody.findAllByRole("listitem");
+    expect(listItems).toHaveLength(5);
+    expect(listItems[0]).toHaveTextContent("2006");
+    expect(listItems[1]).toHaveTextContent("2008");
   });
 });
